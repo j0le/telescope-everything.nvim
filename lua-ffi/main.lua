@@ -80,7 +80,7 @@ if ffi.os == "Windows" then
 
 	local everything_dll = ffi.load([[.\Everything64.dll]])
 
-	everything_dll.Everything_SetSearchA("moin")
+	everything_dll.Everything_SetSearchA('h\195\188ser') -- hüser
 	local request_flags = EVERYTHING_REQUEST_FILE_NAME + EVERYTHING_REQUEST_PATH; -- + EVERYTHING_REQUEST_SIZE;
 	print('request flags ', request_flags);
 	everything_dll.Everything_SetRequestFlags(request_flags);
@@ -101,4 +101,4 @@ if ffi.os == "Windows" then
 		end
 	end
 end
-
+-- lua local ffi = require'ffi'; ffi.cdef([[ unsigned int GetACP(); ]]); print(ffi.C.GetACP())
