@@ -8,6 +8,10 @@ local conf = require("telescope.config").values
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 
+local function display_fn(tbl)
+  return tbl.value[1] .. ' display: '..tostring(display_fn == tbl.display)
+end
+
 -- our picker function: colors
 local colors = function(opts)
   opts = opts or {}
@@ -20,9 +24,6 @@ local colors = function(opts)
         { "blue",  "#0000ff" },
       },
       entry_maker = function(entry)
-        local function display_fn(tbl)
-          return entry[1] .. ' display: '..tostring(display_fn == tbl.display)
-        end
         return {
           value = entry,
           display = display_fn,
