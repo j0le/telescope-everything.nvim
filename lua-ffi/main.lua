@@ -62,7 +62,6 @@ if ffi.os == "Windows" then
 	ffi.cdef([[
 		typedef unsigned long    DWORD;
 		typedef const char *     LPCSTR;
-		typedef _Bool            BOOL;
 
 		// write search state
 		void Everything_SetSearchA(LPCSTR lpString);
@@ -70,7 +69,7 @@ if ffi.os == "Windows" then
 		void Everything_SetSort(DWORD dwSort); // Everything 1.4.1
 
 		// execute query
-		BOOL Everything_QueryA(BOOL bWait);
+		bool Everything_QueryA(bool bWait);
 
 		// read result state
 		DWORD Everything_GetNumResults(void);
