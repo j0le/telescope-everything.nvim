@@ -20,9 +20,12 @@ local colors = function(opts)
         { "blue",  "#0000ff" },
       },
       entry_maker = function(entry)
+        local function display_fn(tbl)
+          return entry[1] .. ' display: '..tostring(display_fn == tbl.display)
+        end
         return {
           value = entry,
-          display = entry[1],
+          display = display_fn,
           ordinal = entry[1],
         }
       end
