@@ -37,7 +37,7 @@ local colors = function(opts)
         actions.close(prompt_bufnr)
         local selection = action_state.get_selected_entry()
         print(vim.inspect(selection))
-        vim.api.nvim_put({ selection[1] }, "", false, true)
+        vim.api.nvim_put({ selection.value[2] }, "", false, true)
       end)
       return true
     end,i
