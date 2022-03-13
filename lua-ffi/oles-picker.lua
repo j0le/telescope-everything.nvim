@@ -19,5 +19,5 @@ local colors = function(opts)
 end
 
 -- to execute the function
-colors()
+colors(require("telescope.themes").get_dropdown{})
 
