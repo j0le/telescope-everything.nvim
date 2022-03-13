@@ -4,7 +4,8 @@
 local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"
 local conf = require("telescope.config").values
-
+local actions = require "telescope.actions"
+local action_state = require "telescope.actions.state"
 
 -- our picker function: colors
 local colors = function(opts)
@@ -15,6 +16,15 @@ local colors = function(opts)
       results = { "red", "green", "blue" }
     },
     sorter = conf.generic_sorter(ots),
+    attach_mappings = function(prompt_bufnr, map)
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+        local selection = action_state.get_selected_entry()
+        -- print(vim.inspect(selection))
+        vim.api.nvim_put({ selection[1] }, "", false, true)
+      end)
+      return true
+    end,i
   }):find()
 end
 
