@@ -99,5 +99,6 @@ if ffi.os == "Windows" then
 			i = i+1;
 		end
 	end
+	print("end of results")
 end
 -- lua local ffi = require'ffi'; ffi.cdef([[ unsigned int GetACP(); ]]); print(ffi.C.GetACP())
