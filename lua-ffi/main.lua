@@ -59,6 +59,18 @@ local EVERYTHING_REQUEST_HIGHLIGHTED_FULL_PATH_AND_FILE_NAME = 0x00008000
 local ffi = require('ffi')
 if ffi.os == "Windows" then
 
+	ffi.cdef([[ unsigned int GetACP(); ]]);
+
+	local active_system_ansi_codepage = ffi.C.GetACP()
+
+	if active_system_ansi_codepage == 65001 then
+		print([[the active "ANSI" codepage is UTF-8 (65001)]])
+	else
+		print([[the active "ANSI" codepage is not UTF-8 (65001), but ]], active_system_ansi_codepage)
+		return
+	end
+
+
 	ffi.cdef([[
 		typedef unsigned long    DWORD;
 		typedef const char *     LPCSTR;
@@ -101,4 +113,4 @@ if ffi.os == "Windows" then
 	end
 	print("end of results")
 end
--- lua local ffi = require'ffi'; ffi.cdef([[ unsigned int GetACP(); ]]); print(ffi.C.GetACP())
+
